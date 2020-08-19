@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class JsonUtils {
 
-    static private Gson gson = new Gson();
+    private static Gson gson = new Gson();
 
     public static <T> T parseObject(String jsonString, Class<T> cls) {
         return gson.fromJson(jsonString, cls);

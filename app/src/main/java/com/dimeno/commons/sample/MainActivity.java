@@ -7,8 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dimeno.commons.annotation.DoubleClick;
-import com.dimeno.commons.net.NetUtils;
-import com.dimeno.commons.ui.AppUtils;
 
 /**
  * MainActivity
@@ -20,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        AppUtils.install(getApplication());
-        String hostIP = NetUtils.getHostIP();
     }
 
     @DoubleClick
