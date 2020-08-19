@@ -26,9 +26,7 @@
 	``` java
 	apply plugin: 'android-aspectjx'
 	```
-3.版本依赖
-
-	[![](https://jitpack.io/v/dimeno-tech/dimeno-commons.svg)](https://jitpack.io/#dimeno-tech/dimeno-commons)
+3. 版本依赖 [![](https://jitpack.io/v/dimeno-tech/dimeno-commons.svg)](https://jitpack.io/#dimeno-tech/dimeno-commons)
 
 	``` java
 	implementation 'com.github.dimeno-tech:dimeno-commons:0.0.1'
