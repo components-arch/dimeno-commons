@@ -1,4 +1,4 @@
-package com.dimeno.commons;
+package com.dimeno.commons.io;
 
 import java.io.Closeable;
 import java.io.IOException;
