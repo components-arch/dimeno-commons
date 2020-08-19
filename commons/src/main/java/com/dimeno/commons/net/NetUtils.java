@@ -48,19 +48,20 @@ public class NetUtils {
         String hostIp = null;
         try {
             Enumeration<NetworkInterface> nis = NetworkInterface.getNetworkInterfaces();
-            InetAddress inetAddress = null;
-            while (nis.hasMoreElements()) {
-                NetworkInterface ni = nis.nextElement();
-                Enumeration<InetAddress> ias = ni.getInetAddresses();
-                while (ias.hasMoreElements()) {
-                    inetAddress = ias.nextElement();
-                    if (inetAddress instanceof Inet6Address) {
-                        continue;// skip ipv6
-                    }
-                    String ip = inetAddress.getHostAddress();
-                    if (!"127.0.0.1".equals(ip)) {
-                        hostIp = inetAddress.getHostAddress();
-                        break;
+            if (nis != null) {
+                while (nis.hasMoreElements()) {
+                    NetworkInterface ni = nis.nextElement();
+                    Enumeration<InetAddress> ias = ni.getInetAddresses();
+                    while (ias.hasMoreElements()) {
+                        InetAddress inetAddress = ias.nextElement();
+                        if (inetAddress instanceof Inet6Address) {
+                            continue;// skip ipv6
+                        }
+                        String ip = inetAddress.getHostAddress();
+                        if (!"127.0.0.1".equals(ip)) {
+                            hostIp = inetAddress.getHostAddress();
+                            break;
+                        }
                     }
                 }
             }
