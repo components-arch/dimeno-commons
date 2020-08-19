@@ -1,4 +1,4 @@
-package com.dimeno.commons;
+package com.dimeno.commons.structure;
 
 import java.util.List;
 
