@@ -1,9 +1,11 @@
 package com.dimeno.commons.toolbar
 
+import android.graphics.Color
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.dimeno.commons.R
 
 /**
@@ -16,16 +18,19 @@ open class ToolbarActivity : AppCompatActivity() {
         setContentView(layoutInflater.inflate(layoutResID, null))
     }
 
-    override fun setContentView(view: View?) {
+    override fun setContentView(view: View) {
         setupContentView(view)
     }
 
-    private fun setupContentView(view: View?) {
+    private fun setupContentView(view: View) {
         if (showToolbar()) {
             val container = FrameLayout(this).apply {
                 setBackgroundResource(R.color.colorPrimary)
                 fitsSystemWindows = true
                 layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
+            }
+            if (view.background == null) {
+                view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.white))
             }
             container.addView(view, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
                 topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
