@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ThemeActivity" />
+        <activity android:name=".ToolbarSampleActivity" />
+        <activity android:name=".ToolbarSampleActivity" />
     </application>
 
 </manifest>

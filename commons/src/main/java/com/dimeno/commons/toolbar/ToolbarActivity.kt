@@ -1,16 +1,14 @@
 package com.dimeno.commons.toolbar
 
-import android.graphics.Color
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import com.dimeno.commons.R
+import com.dimeno.commons.toolbar.impl.Toolbar
 
 /**
- * base toolbar activity
- * Created by wangzhen on 2020/8/27.
+ * TopbarActivity
+ * Created by wangzhen on 2020/8/28.
  */
 open class ToolbarActivity : AppCompatActivity() {
 
@@ -19,46 +17,41 @@ open class ToolbarActivity : AppCompatActivity() {
     }
 
     override fun setContentView(view: View) {
-        setupContentView(view)
+        configContentView(view)
     }
 
-    private fun setupContentView(view: View) {
-        if (showToolbar()) {
-            val container = FrameLayout(this).apply {
-                setBackgroundResource(R.color.colorPrimary)
+    private fun configContentView(view: View) {
+        createTopBar()?.let { bar ->
+            val container = FrameLayout(this)
+            container.addView(view.apply {
                 fitsSystemWindows = true
-                layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
-            }
-            if (view.background == null) {
-                view.setBackgroundColor(ContextCompat.getColor(this, android.R.color.white))
-            }
-            container.addView(view, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
+            }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
                 topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
             })
-            layoutInflater.inflate(R.layout.toolbar_layout, container).findViewById<Toolbar>(R.id.toolbar)?.let { toolbar ->
-                configToolbar(toolbar)
-                toolbar.showOverflowMenu()
-                toolbar.setContentInsetsRelative(0, 0)
-                setSupportActionBar(toolbar)
-                toolbar.setNavigationOnClickListener { finish() }
+            bar.createView()?.apply {
+                setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
+                container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
             }
             super.setContentView(container)
-        } else {
-            super.setContentView(view)
+        } ?: super.setContentView(view)
+    }
+
+    open fun createTopBar(): Toolbar? {
+        return null
+    }
+
+    /**
+     * get status bar height
+     *
+     * @return status bar height
+     */
+    open fun statusBarHeight(): Int {
+        var result = 0
+        resources.getIdentifier("status_bar_height", "dimen", "android").also { resourceId ->
+            if (resourceId > 0) {
+                result = resources.getDimensionPixelSize(resourceId)
+            }
         }
-    }
-
-    /**
-     * whether show toolbar, default true
-     */
-    open fun showToolbar(): Boolean {
-        return true
-    }
-
-    /**
-     * dispatch toolbar to child for further config
-     */
-    open fun configToolbar(toolbar: Toolbar) {
-
+        return result
     }
 }

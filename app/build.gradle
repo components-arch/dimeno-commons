@@ -32,5 +32,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.wangzhen:dark-status-bar:1.0.1'
+    implementation 'com.google.android:flexbox:1.1.0'
     implementation project(path: ':commons')
 }

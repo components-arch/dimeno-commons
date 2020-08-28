@@ -2,8 +2,8 @@ package com.dimeno.commons.sample
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.dimeno.commons.annotation.DoubleClick
 
 /**
@@ -19,16 +19,10 @@ class MainActivity : BaseActivity() {
     @DoubleClick
     fun onClick(view: View) {
         when (view.id) {
-            R.id.btn_double_click -> {
-                Log.e("TAG", "-> click")
-            }
-            R.id.btn_toolbar -> {
-                startActivity(Intent(this, ThemeActivity::class.java))
-            }
+            R.id.btn_double_click ->
+                Toast.makeText(this, "-> click", Toast.LENGTH_SHORT).show()
+            R.id.btn_toolbar ->
+                startActivity(Intent(this, ToolbarSampleActivity::class.java))
         }
-    }
-
-    override fun showToolbar(): Boolean {
-        return false
     }
 }
