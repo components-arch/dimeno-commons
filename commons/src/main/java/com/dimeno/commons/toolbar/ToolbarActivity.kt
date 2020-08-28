@@ -28,7 +28,7 @@ open class ToolbarActivity : AppCompatActivity() {
             }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
                 topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
             })
-            bar.createView()?.apply {
+            bar.createView().apply {
                 setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
                 container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
             }
