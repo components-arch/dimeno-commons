@@ -4,6 +4,43 @@
 [![](https://jitpack.io/v/dimeno-tech/dimeno-commons.svg)](https://jitpack.io/#dimeno-tech/dimeno-commons)
 > implementation 'com.github.dimeno-tech:dimeno-commons:0.0.1'
 
+#### 自定义Toolbar
+
+首先继承ToolbarActivity，并重写createToolbar()创建相应Toolbar，如未重写createToolbar()方法或者重写方法但返回null，当前Activity均默认为全屏主题
+
+**预置三种类型**
+* CommonToolbar 标题居中
+* TextMenuToolbar 标题居中 + 文本菜单
+* IconMenuToolbar 标题居中 + 图片菜单
+
+**用法示例**
+
+``` kotlin
+class ToolbarSampleActivity : ToolbarActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_toolbar_sample)
+    }
+
+    override fun createToolbar(): Toolbar? {
+        return IconMenuToolbar(this, "toolbar", R.mipmap.ic_more)
+    }
+}
+```
+
+如预置类型不满足需求，可继承Toolbar实现自定义Toolbar
+``` kotlin
+class CustomToolbar(activity: Activity) : Toolbar(activity) {
+    override fun layoutRes(): Int {
+        return R.layout.xxx
+    }
+
+    override fun onViewCreated(view: View) {
+
+    }
+}
+```
+
 #### @DoubleClick防连击注解
 连击判定时长可自定义，默认为500ms
 
@@ -158,20 +195,3 @@ public class DataTransfer {
     public void removeAll();
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
