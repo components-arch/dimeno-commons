@@ -7,6 +7,7 @@ import com.dimeno.commons.R
 
 /**
  * toolbar with text menu
+ * Created by wangzhen on 2020/8/28.
  */
 class TextMenuToolbar(activity: Activity, private val title: String, private val menu: String) : Toolbar(activity) {
     override fun layoutRes(): Int {

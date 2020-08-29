@@ -5,6 +5,7 @@ import android.view.View
 
 /**
  * base toolbar
+ * Created by wangzhen on 2020/8/28.
  */
 abstract class Toolbar(protected val activity: Activity) {
     private var view: View? = null

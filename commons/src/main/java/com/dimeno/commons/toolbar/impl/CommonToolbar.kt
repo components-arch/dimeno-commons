@@ -6,7 +6,8 @@ import android.widget.TextView
 import com.dimeno.commons.R
 
 /**
- * common toolbar
+ * CommonToolbar
+ * Created by wangzhen on 2020/8/28.
  */
 class CommonToolbar(activity: Activity, private val title: String) : Toolbar(activity) {
     override fun layoutRes(): Int {

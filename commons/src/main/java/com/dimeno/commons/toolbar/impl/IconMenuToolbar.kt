@@ -8,6 +8,7 @@ import com.dimeno.commons.R
 
 /**
  * toolbar with icon menu
+ * Created by wangzhen on 2020/8/28.
  */
 class IconMenuToolbar(activity: Activity, private val title: String, private val menu: Int) : Toolbar(activity) {
     override fun layoutRes(): Int {
