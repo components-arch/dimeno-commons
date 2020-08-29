@@ -18,7 +18,7 @@ class ToolbarSampleActivity : BaseActivity() {
         setContentView(R.layout.activity_topbar_sample)
     }
 
-    override fun createTopBar(): Toolbar? {
+    override fun createToolbar(): Toolbar? {
         val toolbar = IconMenuToolbar(this, "toolbar", R.mipmap.ic_more)
         toolbar.createView().findViewById<View>(R.id.menu).setOnClickListener {
             Toast.makeText(this, "menu", Toast.LENGTH_SHORT).show()

@@ -21,7 +21,7 @@ open class ToolbarActivity : AppCompatActivity() {
     }
 
     private fun configContentView(view: View) {
-        createTopBar()?.let { bar ->
+        createToolbar()?.let { bar ->
             val container = FrameLayout(this)
             container.addView(view.apply {
                 fitsSystemWindows = true
@@ -36,7 +36,7 @@ open class ToolbarActivity : AppCompatActivity() {
         } ?: super.setContentView(view)
     }
 
-    open fun createTopBar(): Toolbar? {
+    open fun createToolbar(): Toolbar? {
         return null
     }
 
@@ -45,7 +45,7 @@ open class ToolbarActivity : AppCompatActivity() {
      *
      * @return status bar height
      */
-    open fun statusBarHeight(): Int {
+    private fun statusBarHeight(): Int {
         var result = 0
         resources.getIdentifier("status_bar_height", "dimen", "android").also { resourceId ->
             if (resourceId > 0) {
