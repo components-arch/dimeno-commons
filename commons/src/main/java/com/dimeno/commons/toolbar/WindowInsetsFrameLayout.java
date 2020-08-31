@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Insets;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
@@ -34,7 +33,7 @@ public class WindowInsetsFrameLayout extends FrameLayout {
 
     @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
     @Override
-    public WindowInsets onApplyWindowInsets(WindowInsets insets) {
+    public WindowInsets dispatchApplyWindowInsets(WindowInsets insets) {
         int childCount = getChildCount();
         for (int index = 0; index < childCount; index++) {
             View child = getChildAt(index);
@@ -46,13 +45,7 @@ public class WindowInsetsFrameLayout extends FrameLayout {
             int insetRight = insets.getSystemWindowInsetRight();
             int insetBottom = fitIgnoreBottom ? 0 : insets.getSystemWindowInsetBottom();
 
-            Log.e("TAG", "onApplyWindowInsets: view -> " + child.getClass().getName());
-            Log.e("TAG", "onApplyWindowInsets: left -> " + insetLeft);
-            Log.e("TAG", "onApplyWindowInsets: top -> " + insetTop);
-            Log.e("TAG", "onApplyWindowInsets: right -> " + insetRight);
-            Log.e("TAG", "onApplyWindowInsets: bottom -> " + insetBottom);
-
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 child.dispatchApplyWindowInsets(insets.replaceSystemWindowInsets(insetLeft, insetTop, insetRight, insetBottom));
             } else {
                 child.dispatchApplyWindowInsets(new WindowInsets.Builder(insets)
