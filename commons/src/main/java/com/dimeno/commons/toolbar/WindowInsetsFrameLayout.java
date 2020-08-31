@@ -2,8 +2,10 @@ package com.dimeno.commons.toolbar;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Insets;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
@@ -15,6 +17,8 @@ import com.dimeno.commons.R;
  * Created by wangzhen on 2020/8/29.
  */
 public class WindowInsetsFrameLayout extends FrameLayout {
+
+    private boolean fitIgnoreBottom;
 
     public WindowInsetsFrameLayout(Context context) {
         this(context, null);
@@ -36,10 +40,25 @@ public class WindowInsetsFrameLayout extends FrameLayout {
             View child = getChildAt(index);
             Object tag = child.getTag(R.id.tag_fit_ignore_bottom);
             boolean fitIgnoreBottom = tag != null && (boolean) tag;
-            child.dispatchApplyWindowInsets(insets.replaceSystemWindowInsets(insets.getSystemWindowInsetLeft(),
-                    insets.getSystemWindowInsetTop(),
-                    insets.getSystemWindowInsetRight(),
-                    fitIgnoreBottom ? 0 : insets.getSystemWindowInsetBottom()));
+
+            int insetLeft = insets.getSystemWindowInsetLeft();
+            int insetTop = insets.getSystemWindowInsetTop();
+            int insetRight = insets.getSystemWindowInsetRight();
+            int insetBottom = fitIgnoreBottom ? 0 : insets.getSystemWindowInsetBottom();
+
+            Log.e("TAG", "onApplyWindowInsets: view -> " + child.getClass().getName());
+            Log.e("TAG", "onApplyWindowInsets: left -> " + insetLeft);
+            Log.e("TAG", "onApplyWindowInsets: top -> " + insetTop);
+            Log.e("TAG", "onApplyWindowInsets: right -> " + insetRight);
+            Log.e("TAG", "onApplyWindowInsets: bottom -> " + insetBottom);
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                child.dispatchApplyWindowInsets(insets.replaceSystemWindowInsets(insetLeft, insetTop, insetRight, insetBottom));
+            } else {
+                child.dispatchApplyWindowInsets(new WindowInsets.Builder(insets)
+                        .setSystemWindowInsets(Insets.of(insetLeft, insetTop, insetRight, insetBottom))
+                        .build());
+            }
         }
         return insets;
     }
