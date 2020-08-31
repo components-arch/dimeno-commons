@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
-import com.dimeno.commons.R;
-
 /**
  * Window insets frame layout
+ * <p>
+ * Make fitSystemWindows effective more than once
+ * <p>
  * Created by wangzhen on 2020/8/29.
  */
 public class WindowInsetsFrameLayout extends FrameLayout {
@@ -35,13 +36,11 @@ public class WindowInsetsFrameLayout extends FrameLayout {
         int childCount = getChildCount();
         for (int index = 0; index < childCount; index++) {
             View child = getChildAt(index);
-            Object tag = child.getTag(R.id.tag_fit_ignore_bottom);
-            boolean fitIgnoreBottom = tag != null && (boolean) tag;
 
             int insetLeft = insets.getSystemWindowInsetLeft();
             int insetTop = insets.getSystemWindowInsetTop();
             int insetRight = insets.getSystemWindowInsetRight();
-            int insetBottom = fitIgnoreBottom ? 0 : insets.getSystemWindowInsetBottom();
+            int insetBottom = insets.getSystemWindowInsetBottom();
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 child.dispatchApplyWindowInsets(insets.replaceSystemWindowInsets(insetLeft, insetTop, insetRight, insetBottom));

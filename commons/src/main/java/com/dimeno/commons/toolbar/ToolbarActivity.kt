@@ -43,8 +43,6 @@ open class ToolbarActivity : AppCompatActivity() {
                 fitsSystemWindows = true
                 if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
                     setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
-                } else {
-                    setTag(R.id.tag_fit_ignore_bottom, true)
                 }
                 container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
             }
