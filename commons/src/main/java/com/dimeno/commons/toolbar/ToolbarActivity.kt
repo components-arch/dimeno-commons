@@ -1,17 +1,27 @@
 package com.dimeno.commons.toolbar
 
 import android.os.Build
+import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.dimeno.commons.R
 import com.dimeno.commons.toolbar.impl.Toolbar
 
 /**
- * TopbarActivity
+ * toolbar activity
  * Created by wangzhen on 2020/8/28.
  */
 open class ToolbarActivity : AppCompatActivity() {
+
+    @CallSuper
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        (window.decorView as ViewGroup).getChildAt(0).fitsSystemWindows = false
+        findViewById<View>(R.id.action_bar_root)?.fitsSystemWindows = false
+        super.onPostCreate(savedInstanceState)
+    }
 
     override fun setContentView(layoutResID: Int) {
         setContentView(layoutInflater.inflate(layoutResID, null))
@@ -23,21 +33,24 @@ open class ToolbarActivity : AppCompatActivity() {
 
     private fun configContentView(view: View) {
         createToolbar()?.let { bar ->
-            val container = FrameLayout(this)
+            val container = WindowInsetsFrameLayout(this)
             container.addView(view.apply {
                 fitsSystemWindows = true
             }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
                 topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
             })
             bar.createView().apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                fitsSystemWindows = true
+                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
                     setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
                 }
                 container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
             }
             super.setContentView(container)
         } ?: super.setContentView(view)
-        supportActionBar?.hide()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+            supportActionBar?.hide()
+        }
     }
 
     open fun createToolbar(): Toolbar? {
