@@ -1,5 +1,6 @@
 package com.dimeno.commons.toolbar
 
+import android.os.Build
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -29,11 +30,14 @@ open class ToolbarActivity : AppCompatActivity() {
                 topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
             })
             bar.createView().apply {
-                setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
+                }
                 container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
             }
             super.setContentView(container)
         } ?: super.setContentView(view)
+        supportActionBar?.hide()
     }
 
     open fun createToolbar(): Toolbar? {
