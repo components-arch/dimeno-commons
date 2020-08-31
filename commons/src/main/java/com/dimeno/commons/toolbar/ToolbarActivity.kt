@@ -23,21 +23,26 @@ open class ToolbarActivity : AppCompatActivity() {
 
     private fun configContentView(view: View) {
         createToolbar()?.let { bar ->
-            val container = FrameLayout(this)
+            val container = WindowInsetsFrameLayout(this)
             container.addView(view.apply {
                 fitsSystemWindows = true
             }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
                 topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
             })
             bar.createView().apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                fitsSystemWindows = true
+                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
                     setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
+                } else {
+                    setTag(R.id.tag_fit_ignore_bottom, true)
                 }
                 container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
             }
             super.setContentView(container)
         } ?: super.setContentView(view)
-        supportActionBar?.hide()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+            supportActionBar?.hide()
+        }
     }
 
     open fun createToolbar(): Toolbar? {
