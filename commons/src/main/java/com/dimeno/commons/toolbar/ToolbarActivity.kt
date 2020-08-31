@@ -1,17 +1,27 @@
 package com.dimeno.commons.toolbar
 
 import android.os.Build
+import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.dimeno.commons.R
 import com.dimeno.commons.toolbar.impl.Toolbar
 
 /**
- * TopbarActivity
+ * toolbar activity
  * Created by wangzhen on 2020/8/28.
  */
 open class ToolbarActivity : AppCompatActivity() {
+
+    @CallSuper
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        (window.decorView as ViewGroup).getChildAt(0).fitsSystemWindows = false
+        findViewById<View>(R.id.action_bar_root)?.fitsSystemWindows = false
+        super.onPostCreate(savedInstanceState)
+    }
 
     override fun setContentView(layoutResID: Int) {
         setContentView(layoutInflater.inflate(layoutResID, null))

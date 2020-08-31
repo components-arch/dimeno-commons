@@ -17,8 +17,6 @@ import com.dimeno.commons.R;
  */
 public class WindowInsetsFrameLayout extends FrameLayout {
 
-    private boolean fitIgnoreBottom;
-
     public WindowInsetsFrameLayout(Context context) {
         this(context, null);
     }
