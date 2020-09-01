@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="CommonTheme" parent="CommonBaseTheme">
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 </resources>
