@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import com.dimeno.commons.R
@@ -33,19 +34,13 @@ open class ToolbarActivity : AppCompatActivity() {
 
     private fun configContentView(view: View) {
         createToolbar()?.let { bar ->
-            val container = WindowInsetsFrameLayout(this)
-            container.addView(view.apply {
-                fitsSystemWindows = true
-            }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT).apply {
-                topMargin = resources.getDimension(R.dimen.toolbar_height).toInt()
-            })
-            bar.createView().apply {
-                fitsSystemWindows = true
-                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-                    setPadding(paddingLeft, paddingTop + statusBarHeight(), paddingRight, paddingBottom)
-                }
-                container.addView(this, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
+            val container = LinearLayout(this).apply {
+                orientation = LinearLayout.VERTICAL
             }
+            container.addView(bar.createView().apply {
+                fitsSystemWindows = true
+            }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
+            container.addView(view, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
             super.setContentView(container)
         } ?: super.setContentView(view)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
