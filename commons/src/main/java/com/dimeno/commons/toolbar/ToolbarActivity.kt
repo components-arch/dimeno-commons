@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
@@ -29,19 +28,16 @@ open class ToolbarActivity : AppCompatActivity() {
     }
 
     override fun setContentView(view: View) {
-        configContentView(view)
-    }
-
-    private fun configContentView(view: View) {
         createToolbar()?.let { bar ->
-            val container = LinearLayout(this).apply {
+            super.setContentView(LinearLayout(this).apply {
                 orientation = LinearLayout.VERTICAL
-            }
-            container.addView(bar.createView().apply {
-                fitsSystemWindows = true
-            }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT))
-            container.addView(view, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
-            super.setContentView(container)
+
+                addView(bar.createView().apply {
+                    fitsSystemWindows = true
+                }, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+
+                addView(view, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+            })
         } ?: super.setContentView(view)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             supportActionBar?.hide()
