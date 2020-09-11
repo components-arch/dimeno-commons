@@ -1,4 +1,4 @@
-package com.dimeno.commons.ui;
+package com.dimeno.commons.utils;
 
 import android.app.Activity;
 import android.app.Application;

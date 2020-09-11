@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.dimeno.commons.ui.AppUtils;
+import com.dimeno.commons.utils.AppUtils;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;

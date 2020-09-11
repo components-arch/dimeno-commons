@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.dimeno.commons.annotation.DoubleClick
+import com.dimeno.commons.sample.windowinsets.WindowInsetSampleActivity
 
 /**
  * MainActivity
@@ -23,6 +24,8 @@ class MainActivity : BaseActivity() {
                 Toast.makeText(this, "-> click", Toast.LENGTH_SHORT).show()
             R.id.btn_toolbar ->
                 startActivity(Intent(this, ToolbarSampleActivity::class.java))
+            R.id.btn_window_inset ->
+                startActivity(Intent(this, WindowInsetSampleActivity::class.java))
         }
     }
 }

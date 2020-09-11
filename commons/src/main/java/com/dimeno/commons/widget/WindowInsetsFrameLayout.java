@@ -1,4 +1,4 @@
-package com.dimeno.commons.toolbar;
+package com.dimeno.commons.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
