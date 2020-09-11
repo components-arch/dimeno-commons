@@ -9,10 +9,10 @@ import com.dimeno.commons.sample.BaseActivity
 import com.dimeno.commons.sample.R
 
 /**
- * WindowInsetSampleActivity
+ * ViewPagerSampleActivity
  * Created by wangzhen on 2020/9/11.
  */
-class WindowInsetSampleActivity : BaseActivity() {
+class ViewPagerSampleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_window_inset_sample)

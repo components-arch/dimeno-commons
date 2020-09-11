@@ -1,4 +1,4 @@
-package com.dimeno.commons.widget
+package com.dimeno.commons.widget.fitwindows
 
 import android.content.Context
 import android.os.Build
@@ -10,10 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.viewpager.widget.ViewPager
 
 /**
- * a ViewPager which can dispatch windows insets to all children
+ * a view pager which can dispatch windows insets to all children
  * Created by wangzhen on 2020/9/11.
  */
-class WindowsInsetsViewPager : ViewPager {
+class FitWindowsViewPager : ViewPager {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
@@ -21,7 +21,7 @@ class WindowsInsetsViewPager : ViewPager {
     override fun dispatchApplyWindowInsets(insets: WindowInsets?): WindowInsets {
         var result = super.dispatchApplyWindowInsets(insets)
         if (!result.isConsumed) {
-            for (i in 0..childCount) {
+            for (i in 0 until childCount) {
                 getChildAt(i)?.let {
                     result = it.dispatchApplyWindowInsets(insets)
                 }

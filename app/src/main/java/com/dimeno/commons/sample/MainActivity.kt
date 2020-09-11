@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.dimeno.commons.annotation.DoubleClick
-import com.dimeno.commons.sample.windowinsets.WindowInsetSampleActivity
+import com.dimeno.commons.sample.windowinsets.ViewPagerSampleActivity
+import com.dimeno.commons.sample.windowinsets.WindowInsetsActivity
 
 /**
  * MainActivity
@@ -24,8 +25,10 @@ class MainActivity : BaseActivity() {
                 Toast.makeText(this, "-> click", Toast.LENGTH_SHORT).show()
             R.id.btn_toolbar ->
                 startActivity(Intent(this, ToolbarSampleActivity::class.java))
-            R.id.btn_window_inset ->
-                startActivity(Intent(this, WindowInsetSampleActivity::class.java))
+            R.id.btn_view_pager ->
+                startActivity(Intent(this, ViewPagerSampleActivity::class.java))
+            R.id.btn_window_insets ->
+                startActivity(Intent(this, WindowInsetsActivity::class.java))
         }
     }
 }

@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".windowinsets.WindowInsetSampleActivity">
+    tools:context=".windowinsets.ViewPagerSampleActivity">
 
-    <com.dimeno.commons.widget.WindowsInsetsViewPager
+    <com.dimeno.commons.widget.fitwindows.FitWindowsViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

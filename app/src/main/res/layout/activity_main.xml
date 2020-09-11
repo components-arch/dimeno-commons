@@ -29,11 +29,18 @@
             android:text="Toolbar" />
 
         <Button
-            android:id="@+id/btn_window_inset"
+            android:id="@+id/btn_view_pager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClick"
-            android:text="WindowInset" />
+            android:text="ViewPager" />
+
+        <Button
+            android:id="@+id/btn_window_insets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="WindowInsets" />
 
     </com.google.android.flexbox.FlexboxLayout>
 
