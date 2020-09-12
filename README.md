@@ -4,6 +4,30 @@
 [![](https://jitpack.io/v/dimeno-tech/dimeno-commons.svg)](https://jitpack.io/#dimeno-tech/dimeno-commons)
 > implementation 'com.github.dimeno-tech:dimeno-commons:0.0.1'
 
+#### FitSystemWindows
+解决透明主题状态栏、导航栏适配问题
+
+**FitWindowsViewPager**
+> 解决ViewPager内Fragment布局fitSystemWindows不生效问题
+
+**FitWindowsFrameLayout**
+> 解决FrameLayout子View fitSystemWindows只生效一次问题
+
+**属性解释**
+``` xml
+<declare-styleable name="FitWindowsFrameLayout">
+    <attr name="fitType" format="enum">
+        <enum name="both" value="0" />
+        <enum name="top" value="1" />
+        <enum name="bottom" value="2" />
+    </attr>
+</declare-styleable>
+```
+| 属性 | 状态栏 | 导航栏 |
+| :-: | :-: | :-: |
+| **both** | 生效 | 生效 |
+| **top** | 生效 | |
+| **bottom** |  | 生效 |
 #### 自定义Toolbar
 
 首先继承ToolbarActivity，并重写createToolbar()创建相应Toolbar，如未重写createToolbar()方法或者重写方法但返回null，当前Activity均默认为全屏主题
