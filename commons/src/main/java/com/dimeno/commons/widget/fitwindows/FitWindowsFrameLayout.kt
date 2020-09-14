@@ -55,4 +55,10 @@ class FitWindowsFrameLayout : FrameLayout {
                     .build()
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT_WATCH)
+    fun setFitType(type: Int) {
+        this.mFitType = type
+        requestApplyInsets()
+    }
 }
