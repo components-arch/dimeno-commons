@@ -3,14 +3,12 @@ package com.dimeno.commons.utils;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.dimeno.commons.BuildConfig;
-
 /**
  * log utils
  * Created by wangzhen on 2020/9/15.
  */
 public class L {
-    private static boolean DEBUG = BuildConfig.DEBUG;
+    private static boolean DEBUG = AppUtils.isDebug();
     private static String TAG;
 
     static {

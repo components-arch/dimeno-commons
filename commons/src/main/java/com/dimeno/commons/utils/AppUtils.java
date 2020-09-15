@@ -32,25 +32,33 @@ import java.util.Queue;
  * Created by wangzhen on 2020/8/19.
  */
 public class AppUtils {
-
+    private static Application sApplication;
     private static Handler sHandler;
+    private static boolean sDebug;
 
     private AppUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    private static Application mApplication;
-
     public static void install(Application application) {
-        mApplication = application;
+        install(application, false);
+    }
+
+    public static void install(Application application, boolean debug) {
+        sApplication = application;
+        sDebug = debug;
+    }
+
+    public static boolean isDebug() {
+        return sDebug;
     }
 
     public static Application getApplication() {
-        return mApplication;
+        return sApplication;
     }
 
     public static Context getContext() {
-        return mApplication;
+        return sApplication;
     }
 
     /**
