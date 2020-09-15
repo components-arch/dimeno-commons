@@ -20,6 +20,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            java {
+                include '**/*.java'
+                include '**/*.kt'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -28,5 +36,5 @@ dependencies {
     api 'org.aspectj:aspectjrt:1.9.5'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 }

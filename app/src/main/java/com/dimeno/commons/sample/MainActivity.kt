@@ -3,10 +3,11 @@ package com.dimeno.commons.sample
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.dimeno.commons.annotation.DoubleClick
 import com.dimeno.commons.sample.windowinsets.ViewPagerSampleActivity
 import com.dimeno.commons.sample.windowinsets.WindowInsetsActivity
+import com.dimeno.commons.utils.L
+import com.dimeno.commons.utils.T
 
 /**
  * MainActivity
@@ -21,14 +22,17 @@ class MainActivity : BaseActivity() {
     @DoubleClick
     fun onClick(view: View) {
         when (view.id) {
-            R.id.btn_double_click ->
-                Toast.makeText(this, "-> click", Toast.LENGTH_SHORT).show()
+            R.id.btn_double_click -> {
+                T.show("-> click")
+            }
             R.id.btn_toolbar ->
                 startActivity(Intent(this, ToolbarSampleActivity::class.java))
             R.id.btn_view_pager ->
                 startActivity(Intent(this, ViewPagerSampleActivity::class.java))
-            R.id.btn_window_insets ->
+            R.id.btn_window_insets -> {
                 startActivity(Intent(this, WindowInsetsActivity::class.java))
+                L.e("打开WindowInsets页面")
+            }
         }
     }
 }
