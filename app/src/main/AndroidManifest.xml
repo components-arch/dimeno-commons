@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ToolbarScrollActivity" />
         <activity android:name=".windowinsets.WindowInsetsActivity" />
         <activity android:name=".windowinsets.ViewPagerSampleActivity" />
         <activity android:name=".MainActivity">

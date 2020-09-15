@@ -29,6 +29,13 @@
             android:text="Toolbar" />
 
         <Button
+            android:id="@+id/btn_toolbar_scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Toolbar异常" />
+
+        <Button
             android:id="@+id/btn_view_pager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -27,6 +27,8 @@ class MainActivity : BaseActivity() {
             }
             R.id.btn_toolbar ->
                 startActivity(Intent(this, ToolbarSampleActivity::class.java))
+            R.id.btn_toolbar_scroll ->
+                startActivity(Intent(this, ToolbarScrollActivity::class.java))
             R.id.btn_view_pager ->
                 startActivity(Intent(this, ViewPagerSampleActivity::class.java))
             R.id.btn_window_insets -> {
