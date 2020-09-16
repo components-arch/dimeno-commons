@@ -10,6 +10,6 @@ import com.dimeno.commons.utils.AppUtils
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        AppUtils.install(this)
+        AppUtils.install(this, true)
     }
 }

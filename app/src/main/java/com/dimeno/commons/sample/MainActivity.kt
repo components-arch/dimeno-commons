@@ -1,11 +1,13 @@
 package com.dimeno.commons.sample
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.dimeno.commons.annotation.DoubleClick
 import com.dimeno.commons.sample.windowinsets.ViewPagerSampleActivity
 import com.dimeno.commons.sample.windowinsets.WindowInsetsActivity
+import com.dimeno.commons.utils.FileUtils
 import com.dimeno.commons.utils.L
 import com.dimeno.commons.utils.T
 
@@ -34,6 +36,23 @@ class MainActivity : BaseActivity() {
             R.id.btn_window_insets -> {
                 startActivity(Intent(this, WindowInsetsActivity::class.java))
                 L.e("打开WindowInsets页面")
+            }
+            R.id.btn_read_uri -> {
+                val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                    type = "image/*"
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                }
+                startActivityForResult(intent, 0)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            if (requestCode == 0) {
+                val url = FileUtils.getFileFromUri(this, data.data)
+                L.e("-> $url")
             }
         }
     }
