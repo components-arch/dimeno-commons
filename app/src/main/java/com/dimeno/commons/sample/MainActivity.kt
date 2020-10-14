@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.dimeno.commons.annotation.DoubleClick
+import com.dimeno.commons.sample.network.NetworkEncryptionActivity
 import com.dimeno.commons.sample.windowinsets.ViewPagerSampleActivity
 import com.dimeno.commons.sample.windowinsets.WindowInsetsActivity
 import com.dimeno.commons.utils.FileUtils
@@ -33,10 +34,8 @@ class MainActivity : BaseActivity() {
                 startActivity(Intent(this, ToolbarScrollActivity::class.java))
             R.id.btn_view_pager ->
                 startActivity(Intent(this, ViewPagerSampleActivity::class.java))
-            R.id.btn_window_insets -> {
+            R.id.btn_window_insets ->
                 startActivity(Intent(this, WindowInsetsActivity::class.java))
-                L.e("打开WindowInsets页面")
-            }
             R.id.btn_read_uri -> {
                 val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                     type = "image/*"
@@ -44,6 +43,8 @@ class MainActivity : BaseActivity() {
                 }
                 startActivityForResult(intent, 0)
             }
+            R.id.btn_network_encryption ->
+                startActivity(Intent(this, NetworkEncryptionActivity::class.java))
         }
     }
 
