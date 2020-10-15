@@ -41,15 +41,7 @@ class NetworkEncryptionActivity : BaseActivity() {
             override fun onSuccess(data: LoginEntity) {
                 if (data.success) {
                     T.show("测试成功")
-                } else if (data.code == 700) {
-                    // token expires
-                    SPHelper.get().put("token", "").commit()
-                    T.show("${data.message}，请重新登录")
                 }
-            }
-
-            override fun onError(code: Int, message: String) {
-                T.show(message)
             }
         }).exe()
     }
