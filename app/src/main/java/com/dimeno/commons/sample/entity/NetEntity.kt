@@ -1,10 +1,10 @@
 package com.dimeno.commons.sample.entity
 
 /**
- * LoginEntity
+ * NetEntity
  * Created by wangzhen on 2020/10/14.
  */
-class LoginEntity {
+class NetEntity {
     var code: Int = 0
     var message: String? = null
     var success: Boolean = false

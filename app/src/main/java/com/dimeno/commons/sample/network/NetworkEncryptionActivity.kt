@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.dimeno.commons.sample.BaseActivity
 import com.dimeno.commons.sample.R
-import com.dimeno.commons.sample.entity.LoginEntity
+import com.dimeno.commons.sample.entity.NetEntity
 import com.dimeno.commons.storage.SPHelper
 import com.dimeno.commons.toolbar.impl.CommonToolbar
 import com.dimeno.commons.toolbar.impl.Toolbar
@@ -37,8 +37,8 @@ class NetworkEncryptionActivity : BaseActivity() {
     }
 
     private fun request() {
-        TryTask(object : LoadingCallback<LoginEntity>() {
-            override fun onSuccess(data: LoginEntity) {
+        TryTask(object : LoadingCallback<NetEntity>() {
+            override fun onSuccess(data: NetEntity) {
                 if (data.success) {
                     T.show("测试成功")
                 }
@@ -47,8 +47,8 @@ class NetworkEncryptionActivity : BaseActivity() {
     }
 
     private fun login() {
-        LoginTask(object : LoadingCallback<LoginEntity>() {
-            override fun onSuccess(data: LoginEntity) {
+        LoginTask(object : LoadingCallback<NetEntity>() {
+            override fun onSuccess(data: NetEntity) {
                 if (data.success) {
                     data.data?.let {
                         SPHelper.get().put("token", it.token).commit()
