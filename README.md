@@ -3,7 +3,27 @@
 
 [![Platform](https://img.shields.io/badge/Platform-Android-00CC00.svg?style=flat)](https://www.android.com)
 [![](https://jitpack.io/v/dimeno-tech/dimeno-commons.svg)](https://jitpack.io/#dimeno-tech/dimeno-commons)
-> implementation 'com.github.dimeno-tech:dimeno-commons:0.0.1'
+
+### 依赖导入
+
+项目根目录
+
+``` gradle
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
+模块目录
+
+``` gradle
+dependencies {
+	implementation 'com.github.dimeno-tech:dimeno-commons:0.0.1'
+}
+```
 
 ### FitSystemWindows
 解决透明主题状态栏、导航栏适配问题
