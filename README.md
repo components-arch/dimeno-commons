@@ -1,10 +1,11 @@
 # dimeno-commons
-公共类库  
+> 公共类库
 
+[![Platform](https://img.shields.io/badge/Platform-Android-00CC00.svg?style=flat)](https://www.android.com)
 [![](https://jitpack.io/v/dimeno-tech/dimeno-commons.svg)](https://jitpack.io/#dimeno-tech/dimeno-commons)
 > implementation 'com.github.dimeno-tech:dimeno-commons:0.0.1'
 
-#### FitSystemWindows
+### FitSystemWindows
 解决透明主题状态栏、导航栏适配问题
 
 **FitWindowsViewPager**
@@ -14,6 +15,7 @@
 > 解决FrameLayout子View fitSystemWindows只生效一次问题
 
 **属性解释**
+
 ``` xml
 <declare-styleable name="FitWindowsFrameLayout">
     <attr name="fitType" format="enum">
@@ -23,16 +25,19 @@
     </attr>
 </declare-styleable>
 ```
+
 | 属性 | 状态栏 | 导航栏 |
 | :-: | :-: | :-: |
 | **both** | 生效 | 生效 |
 | **top** | 生效 | |
 | **bottom** |  | 生效 |
-#### 自定义Toolbar
+
+### 自定义Toolbar
 
 首先继承ToolbarActivity，并重写createToolbar()创建相应Toolbar，如未重写createToolbar()方法或者重写方法但返回null，当前Activity均默认为全屏主题
 
 **预置三种类型**
+
 * CommonToolbar 标题居中
 * TextMenuToolbar 标题居中 + 文本菜单
 * IconMenuToolbar 标题居中 + 图片菜单
@@ -65,7 +70,7 @@ class CustomToolbar(activity: Activity) : Toolbar(activity) {
 }
 ```
 
-#### @DoubleClick防连击注解
+### @DoubleClick防连击注解
 连击判定时长可自定义，默认为500ms
 
 **使用方式**
@@ -102,7 +107,7 @@ class CustomToolbar(activity: Activity) : Toolbar(activity) {
 	});
 	```
 
-#### 应用界面
+### 应用界面
 AppUtils
 > 使用前请先初始化：AppUtils.install(Context)
 
@@ -138,7 +143,7 @@ public class AppUtils {
 ```
 
 
-#### 加密
+### 加密
 EncryptionUtil
 
 ``` java
@@ -161,7 +166,7 @@ public class Base64Util {
 }
 ```
 
-#### IO管理
+### IO管理
 IOUtils
 
 ``` java
@@ -170,7 +175,7 @@ public class IOUtils {
 }
 ```
 
-#### 数据解析
+### 数据解析
 JsonUtils
 
 ``` java
@@ -184,7 +189,7 @@ public class JsonUtils {
 }
 ```
 
-#### 网络
+### 网络
 NetUtils
 
 ``` java
@@ -197,7 +202,7 @@ public class NetUtils {
 }
 ```
 
-#### 集合操作
+### 集合操作
 IList
 
 ``` java
@@ -207,7 +212,7 @@ public class IList {
 }
 ```
 
-#### 数据传递
+### 数据传递
 DataTransfer
 
 ``` java
